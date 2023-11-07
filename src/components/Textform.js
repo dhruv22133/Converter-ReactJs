@@ -14,10 +14,25 @@ export default function Textform(props) {
         setText(text.toLowerCase());
     }
     const titlecase = () => {
-        let str = text.split(' ');
-        for (let i = 0; i < str.length; i++) {
-            str[i] = str[i][0].toUpperCase() + str[i].slice(1).toLowerCase();
+        if(text.length <= 0 || (text.length === 1 && text[text.length -1] === " ")){return}
+        let str;
+        if (text[text.length - 1] === " ") {
+            str = text.slice(0,-1);
+            str = str.split(' ');
+            for (let i = 0; i < str.length; i++) {
+                str[i] = str[i][0].toUpperCase() + str[i].slice(1).toLowerCase();
+            }
         }
+        else {
+            str = text.split(' ');
+            for (let i = 0; i < str.length; i++) {
+                str[i] = str[i][0].toUpperCase() + str[i].slice(1).toLowerCase();
+            }
+        }
+        // let str = text.split(' ');
+        // for (let i = 0; i < str.length; i++) {
+        //     str[i] = str[i][0].toUpperCase() + str[i].slice(1).toLowerCase();
+        // } 
         setText(str.join(" "));
 
     }
